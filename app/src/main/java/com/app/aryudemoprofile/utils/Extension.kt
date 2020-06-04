@@ -28,24 +28,3 @@ fun showToast(context: Context?,msg: String) {
     toast.setGravity(Gravity.CENTER, 0, 0)
     toast.show()
 }
-
-fun getFormattedDate(normal_date: String): String {
-    Log.d("DateFormat", normal_date)
-    var formated_date = ""
-    if (normal_date.length > 6) {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
-        originalFormat.timeZone = TimeZone.getTimeZone("GMT")
-        val targetFormat = SimpleDateFormat("yyyy-MM-dd")
-        val date: Date
-        try {
-            date = originalFormat.parse(normal_date)
-            formated_date = targetFormat.format(date)
-        } catch (e: ParseException) {
-            e.printStackTrace()
-        }
-
-    } else {
-        formated_date = normal_date
-    }
-    return formated_date
-}
